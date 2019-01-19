@@ -1,15 +1,17 @@
 'use strict';
 
 const http = require('http');
+const Route = require('./route.js');
 
 http.createServer((req, res) => {
   const { pathSegments, queryParameters } = parsePath(req.url);
-  console.log(pathSegments);
-  console.log(queryParameters);
 
-  if (req.method === 'GET' && pathSegments[0] === 'products' && pathSegments.length === 1) {
+  let getAllProductsRoute = new Route('GET', '/purchases');
+  let getProductRoute = new Route('GET', '/purchases/*');
+
+  if (getAllProductsRoute.validateRequest(req.method, pathSegments)) {
     getAllProducts(res, queryParameters);
-  } else if (req.method === 'GET' && pathSegments[0] === 'products' && pathSegments.length === 2) {
+  } else if (getProductRoute.validateRequest(req.method, pathSegments)) {
     getProduct(res, pathSegments[1]);
   } else {
     res.writeHead(404, { 'Content-Type': 'text/plain' });
