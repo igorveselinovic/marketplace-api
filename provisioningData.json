@@ -1,0 +1,34 @@
+{
+  "data": [
+    {
+      "title": "Nintendo Switch",
+      "price": 399.99,
+      "inventory_count": 100
+    },
+    {
+      "title": "The Legend of Zelda: Breath of the Wild",
+      "price": 79.99,
+      "inventory_count": 300
+    },
+    {
+      "title": "Super Mario Odyssey",
+      "price": 79.99,
+      "inventory_count": 500
+    },
+    {
+      "title": "Super Smash Bros. Ultimate",
+      "price": 79.99,
+      "inventory_count": 400
+    },
+    {
+      "title": "Hollow KNight",
+      "price": 16.99,
+      "inventory_count": 200
+    },
+    {
+      "title": "Nintendo Switch Pro Controller",
+      "price": 89.99,
+      "inventory_count": 250
+    }
+  ]
+}
