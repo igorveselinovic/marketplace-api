@@ -25,4 +25,4 @@ function getAll(res, params) {
 module.exports = {
   get,
   getAll
-}
+};
