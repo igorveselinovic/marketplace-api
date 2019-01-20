@@ -12,23 +12,23 @@ const shoppingCartProductsHandler = require('./routes/shopping-carts/products/ha
 http.createServer((req, res) => {
   const { pathSegments, queryParameters } = parsePath(req.url);
 
-  let getProductsRoute = new Route('GET', '/products');
-  let getProductRoute = new Route('GET', '/products/*');
+  const getProductsRoute = new Route('GET', '/products');
+  const getProductRoute = new Route('GET', '/products/*');
 
-  let getProductPurchases = new Route('GET', '/purchases/products');
-  let getProductPurchase = new Route('GET', '/purchases/products/*');
-  let postProductPurchase = new Route('POST', '/purchases/products');
+  const getProductPurchases = new Route('GET', '/purchases/products');
+  const getProductPurchase = new Route('GET', '/purchases/products/*');
+  const postProductPurchase = new Route('POST', '/purchases/products');
 
-  let getShoppingCartPurchases = new Route('GET', '/purchases/shopping-carts');
-  let getShoppingCartPurchase = new Route('GET', '/purchases/shopping-carts/*');
-  let postShoppingCartPurchase = new Route('POST', '/purchases/shopping-carts');
+  const getShoppingCartPurchases = new Route('GET', '/purchases/shopping-carts');
+  const getShoppingCartPurchase = new Route('GET', '/purchases/shopping-carts/*');
+  const postShoppingCartPurchase = new Route('POST', '/purchases/shopping-carts');
 
-  let getShoppingCart = new Route('GET', '/shopping-carts/*');
-  let deleteShoppingCart = new Route('DELETE', '/shopping-carts/*');
-  let postShoppingCart = new Route('POST', '/shopping-carts');
+  const getShoppingCart = new Route('GET', '/shopping-carts/*');
+  const deleteShoppingCart = new Route('DELETE', '/shopping-carts/*');
+  const postShoppingCart = new Route('POST', '/shopping-carts');
 
-  let deleteShoppingCartProducts = new Route('DELETE', '/shopping-cart/*/products');
-  let postShoppingCartProducts = new Route('POST', '/shopping-cart/*/products');
+  const deleteShoppingCartProducts = new Route('DELETE', '/shopping-carts/*/products');
+  const postShoppingCartProducts = new Route('POST', '/shopping-carts/*/products');
 
   if (getProductRoute.validateRequest(req.method, pathSegments)) {
     productsHandler.get(res, pathSegments[1]);
@@ -50,6 +50,20 @@ http.createServer((req, res) => {
     shoppingCartPurchasesHandler.getAll(res, queryParameters);
   } else if (postShoppingCartPurchase.validateRequest(req.method, pathSegments)) {
     shoppingCartPurchasesHandler.post(res);
+  }
+
+  else if (getShoppingCart.validateRequest(req.method, pathSegments)) {
+    shoppingCartsHandler.get(res, pathSegments[1]);
+  } else if (deleteShoppingCart.validateRequest(req.method, pathSegments)) {
+    shoppingCartsHandler.del(res, pathSegments[1]);
+  } else if (postShoppingCart.validateRequest(req.method, pathSegments)) {
+    shoppingCartsHandler.post(res);
+  }
+
+  else if (deleteShoppingCartProducts.validateRequest(req.method, pathSegments)) {
+    shoppingCartProductsHandler.del(res, pathSegments[1]);
+  } else if (postShoppingCartProducts.validateRequest(req.method, pathSegments)) {
+    shoppingCartProductsHandler.post(res, pathSegments[1]);
   }
 
   else {

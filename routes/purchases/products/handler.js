@@ -15,7 +15,7 @@ function get(res, id) {
  */
 function getAll(res) {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.write(JSON.stringify({ 'getall': 'Hi'}));
+  res.write(JSON.stringify({ 'getall': 'Hi' }));
   res.end();
 }
 
@@ -25,7 +25,7 @@ function getAll(res) {
  */
 function post(res) {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.write(JSON.stringify({ 'post': 'Hi'}));
+  res.write(JSON.stringify({ 'post': 'Hi' }));
   res.end();
 }
 
