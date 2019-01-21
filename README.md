@@ -1,21 +1,133 @@
-GET/products -> get all products  
-GET/product/{id} -> get a specific product  
+# Marketplace API
+This is a basic marketplace API for Shopify's Summer 2019 Developer Intern Challenge.  
 
------------------------------------------------------------------------------------------------------------------------
+## Dependencies
+* Node.js
+* npm
+* MongoDB
 
-POST/purchases/products -> purchase an item  
-GET/purchases/products -> get all single item purchases  
-GET/purchases/products/{id} -> get a specific single item purchase  
+## Setup
+1. Clone the repository:
+```
+git clone git@github.com:igorveselinovic/marketplace-api.git
+```
+2. Install npm dependencies:
+```
+cd marketplace-api
+npm install
+```
+3. Provision the database:
+```
+node provisioning.js
+```
 
-POST/purchases/shopping-carts -> purchase the items in a shopping cart  
-GET/purchases/shopping-carts -> get all shopping cart purchases  
-GET/purchases/shopping-carts/{id} -> get a specific shopping cart purchase  
+## Running the App
+```
+node index.js
+```
 
------------------------------------------------------------------------------------------------------------------------
+## Cleanup
+```
+node clean.js
+```
 
-POST/shopping-carts -> make a shopping-cart  
-DELETE/shopping-carts/{id} -> delete a specific shopping cart  
-GET/shopping-carts/{id} -> get a specific shopping cart  
+## API Reference
 
-POST/shopping-carts/{id}/products -> add item(s) to a specific shopping cart  
-DELETE/shopping-carts/{id}/products -> delete item(s) from a specific shopping cart  
+---
+
+### Querying Products
+
+**GET/products**  
+* Get all (or a subset of all) products  
+* Query Parameters:  
+  * `/products/?onlyAvailable={true|false}`  
+    * Only return products with available inventory  
+
+**GET/product/{id}**  
+* Get a specific product  
+* {id} = PRODUCT_ID
+
+---
+
+### Purchasing Products (and Querying the Purchases)
+
+**POST/purchases/products**  
+* Purchase an item  
+* Request Body (JSON):  
+```
+{
+  "productId": "<PRODUCT_ID>"
+}
+```
+
+**GET/purchases/products**  
+* Get all purchases of single products  
+
+**GET/purchases/products/{id}**  
+* Get a specific purchase of a single product  
+* {id} = PRODUCT_PURCHASE_ID
+
+---
+
+### Managing Shopping Carts
+
+**POST/shopping-carts**  
+* Create a shopping cart  
+
+**DELETE/shopping-carts/{id}**  
+* Delete a specific shopping cart  
+* {id} = SHOPPING_CART_ID
+
+**GET/shopping-carts/{id}**  
+* Get a specific shopping cart  
+* {id} = SHOPPING_CART_ID
+
+---
+
+### Managing the Items in a Shopping Cart
+
+**POST/shopping-carts/{id}/products**  
+* Add item(s) to a specific shopping cart  
+* Request Body (JSON):  
+```
+{
+  "product": {
+    "id": "<PRODUCT_ID>",
+    "quantity": 5
+  }
+}
+```
+
+**DELETE/shopping-carts/{id}/products**  
+* Remove item(s) from a specific shopping cart  
+* Request Body (JSON):  
+```
+{
+  "product": {
+    "id": "<PRODUCT_ID>",
+    "quantity": 5
+  }
+}
+```
+
+---
+
+### Purchasing Shopping Carts (and Querying the Purchases)
+
+**POST/purchases/shopping-carts**  
+* Purchase the items in a shopping cart  
+* Request Body (JSON):  
+```
+{
+  "shoppingCartId": "<SHOPPING_CART_ID>"
+}
+```
+
+**GET/purchases/shopping-carts**  
+* Get all purchases of shopping carts  
+
+**GET/purchases/shopping-carts/{id}**  
+* Get a specific purchase of a shopping cart  
+* {id} = SHOPPING_CART_PURCHASE_ID
+
+---

@@ -92,6 +92,8 @@ http.createServer(async (req, res) => {
   mongoClient.close();
 }).listen(8080);
 
+console.log('Listening on port 8080...');
+
 /**
  * Break a URL request path up into its components.
  * @param {string} path - URL path
