@@ -61,20 +61,20 @@ http.createServer(async (req, res) => {
     await productPurchasesHandler.post(res, db, body);
   }
 
+  else if (getShoppingCart.validateRequest(req.method, pathSegments)) {
+    await shoppingCartsHandler.get(res, db, pathSegments[1]);
+  } else if (deleteShoppingCart.validateRequest(req.method, pathSegments)) {
+    await shoppingCartsHandler.del(res, db, pathSegments[1]);
+  } else if (postShoppingCart.validateRequest(req.method, pathSegments)) {
+    await shoppingCartsHandler.post(res, db);
+  }
+
   else if (getShoppingCartPurchase.validateRequest(req.method, pathSegments)) {
     shoppingCartPurchasesHandler.get(res, pathSegments[2]);
   } else if (getShoppingCartPurchases.validateRequest(req.method, pathSegments)) {
     shoppingCartPurchasesHandler.getAll(res, queryParameters);
   } else if (postShoppingCartPurchase.validateRequest(req.method, pathSegments)) {
     shoppingCartPurchasesHandler.post(res);
-  }
-
-  else if (getShoppingCart.validateRequest(req.method, pathSegments)) {
-    shoppingCartsHandler.get(res, pathSegments[1]);
-  } else if (deleteShoppingCart.validateRequest(req.method, pathSegments)) {
-    shoppingCartsHandler.del(res, pathSegments[1]);
-  } else if (postShoppingCart.validateRequest(req.method, pathSegments)) {
-    shoppingCartsHandler.post(res);
   }
 
   else if (deleteShoppingCartProducts.validateRequest(req.method, pathSegments)) {
