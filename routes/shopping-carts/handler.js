@@ -92,7 +92,7 @@ async function post(res, db) {
   try {
     const document = {
       products: [],
-      totalPrice: 0
+      total_price: 0
     };
 
     const shoppingCartsDb = db.collection('shopping_carts');

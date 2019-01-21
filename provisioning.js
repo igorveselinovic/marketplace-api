@@ -16,7 +16,7 @@ MongoClient.connect('mongodb://localhost:27017/exampleDb', { 'useNewUrlParser': 
 
   try {
     const collection = await db.collection('inventory');
-    await collection.insertMany(data, { 'w': 1 });
+    await collection.insertMany(data, { w: 1 });
     await client.close();
   } catch (error) {
     console.error(error);

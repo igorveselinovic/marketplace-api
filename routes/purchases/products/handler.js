@@ -72,7 +72,7 @@ async function post(res, db, body) {
   if (!body.productId) {
     res.writeHead(400, { 'Content-Type': 'text/plain' });
     res.write('400 Bad Request');
-    res.write('\nNo product ID');
+    res.write('\nNo product ID in request body');
     res.end();
     return;
   }
@@ -90,8 +90,8 @@ async function post(res, db, body) {
   }
 
   try {
-    const inventory = db.collection('inventory');
-    const product = await inventory.findOne({
+    const inventoryDb = db.collection('inventory');
+    const product = await inventoryDb.findOne({
       _id: mongoId
     });
 
@@ -105,17 +105,17 @@ async function post(res, db, body) {
     } else {
       const document = {
         product: {
-          id: product._id,
+          id: mongoId,
           title: product.title,
           price: product.price
         }
       };
 
       const purchases = db.collection('product_purchases');
-      const insertResult = await purchases.insertOne(document, { 'w': 1 });
+      const insertResult = await purchases.insertOne(document, { w: 1 });
       const insertedDoc = insertResult.ops[0];
 
-      await inventory.updateOne({
+      await inventoryDb.updateOne({
         _id: insertedDoc.product.id
       }, {
         $inc: {
