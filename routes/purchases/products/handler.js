@@ -98,6 +98,10 @@ async function post(res, db, body) {
     if (!product) {
       res.writeHead(404, { 'Content-Type': 'text/plain' });
       res.write('404 Product Not Found');
+    } else if (product.inventory_count <= 0) {
+      res.writeHead(200, { 'Content-Type': 'text/plain' });
+      res.write('200 OK');
+      res.write('\nRequested product is out of stock');
     } else {
       const document = {
         product: {
@@ -111,7 +115,6 @@ async function post(res, db, body) {
       const insertResult = await purchases.insertOne(document, { 'w': 1 });
       const insertedDoc = insertResult.ops[0];
 
-      console.log(insertedDoc._id)
       await inventory.updateOne({
         _id: insertedDoc.product.id
       }, {
