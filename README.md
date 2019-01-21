@@ -2,9 +2,9 @@
 This is a basic marketplace API for Shopify's Summer 2019 Developer Intern Challenge.  
 
 ## Dependencies
-* Node.js
-* npm
-* MongoDB
+* [Node.js](https://nodejs.org/en/download/)  
+* [npm](https://www.npmjs.com/get-npm)  
+* [MongoDB](https://docs.mongodb.com/manual/)  
 
 ## Setup
 1. Clone the repository:
