@@ -45,7 +45,7 @@ node clean.js
 
 **GET/product/{id}**  
 * Get a specific product  
-* {id} = PRODUCT_ID
+* {id} = PRODUCT_ID  
 
 ---
 
@@ -65,7 +65,7 @@ node clean.js
 
 **GET/purchases/products/{id}**  
 * Get a specific purchase of a single product  
-* {id} = PRODUCT_PURCHASE_ID
+* {id} = PRODUCT_PURCHASE_ID  
 
 ---
 
@@ -76,11 +76,11 @@ node clean.js
 
 **DELETE/shopping-carts/{id}**  
 * Delete a specific shopping cart  
-* {id} = SHOPPING_CART_ID
+* {id} = SHOPPING_CART_ID  
 
 **GET/shopping-carts/{id}**  
 * Get a specific shopping cart  
-* {id} = SHOPPING_CART_ID
+* {id} = SHOPPING_CART_ID  
 
 ---
 
@@ -88,6 +88,7 @@ node clean.js
 
 **POST/shopping-carts/{id}/products**  
 * Add item(s) to a specific shopping cart  
+* {id} = SHOPPING_CART_ID  
 * Request Body (JSON):  
 ```
 {
@@ -100,6 +101,7 @@ node clean.js
 
 **DELETE/shopping-carts/{id}/products**  
 * Remove item(s) from a specific shopping cart  
+* {id} = SHOPPING_CART_ID  
 * Request Body (JSON):  
 ```
 {
@@ -128,6 +130,6 @@ node clean.js
 
 **GET/purchases/shopping-carts/{id}**  
 * Get a specific purchase of a shopping cart  
-* {id} = SHOPPING_CART_PURCHASE_ID
+* {id} = SHOPPING_CART_PURCHASE_ID  
 
 ---
