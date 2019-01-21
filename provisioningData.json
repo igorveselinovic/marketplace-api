@@ -21,7 +21,7 @@
       "inventory_count": 400
     },
     {
-      "title": "Hollow KNight",
+      "title": "Hollow Knight",
       "price": 16.99,
       "inventory_count": 200
     },
@@ -29,6 +29,21 @@
       "title": "Nintendo Switch Pro Controller",
       "price": 89.99,
       "inventory_count": 250
+    },
+    {
+      "title": "Audio-Technica ATH-MSR7BK",
+      "price": 299.95,
+      "inventory_count": 0
+    },
+    {
+      "title": "Samsung Galaxy A5",
+      "price": 299.95,
+      "inventory_count": 0
+    },
+    {
+      "title": "Nike Free RN Flyknit 2018",
+      "price": 200.00,
+      "inventory_count": 0
     }
   ]
 }

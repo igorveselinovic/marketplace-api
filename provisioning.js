@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 /* TODO: Make URL a config variable */
-MongoClient.connect('mongodb://localhost:27017/exampleDb', { 'useNewUrlParser': true }, async function(err, client) {
+MongoClient.connect('mongodb://localhost:27017/exampleDb', { 'useNewUrlParser': true }, async (err, client) => {
   if (err) {
     console.error(err);
   }
