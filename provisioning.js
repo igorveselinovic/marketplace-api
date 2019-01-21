@@ -2,7 +2,6 @@ const MongoClient = require('mongodb').MongoClient;
 const fs = require('fs');
 const path = require('path');
 
-/* TODO: Make URL a config variable */
 MongoClient.connect('mongodb://localhost:27017/exampleDb', { 'useNewUrlParser': true }, async (err, client) => {
   if (err) {
     console.error(err);
@@ -18,6 +17,7 @@ MongoClient.connect('mongodb://localhost:27017/exampleDb', { 'useNewUrlParser': 
     const collection = await db.collection('inventory');
     await collection.insertMany(data, { w: 1 });
     await client.close();
+    console.log('Successfully provisioned data');
   } catch (error) {
     console.error(error);
   }
